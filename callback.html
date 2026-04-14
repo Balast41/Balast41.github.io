@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Spotify Login</title>
+  <title>Spotify Callback</title>
 </head>
 <body>
 <script>
-  // récupère ?code=XXXX
   const params = new URLSearchParams(window.location.search);
   const code = params.get("code");
 
-  // redirige vers WRY (Godot capture)
   if (code) {
-    window.location.href =
-      "http://127.0.0.1:8888/callback?code=" + code;
+    // 🔥 OPTION PROPRE : envoyer directement vers Godot WRY
+    window.location.href = "about:blank";
+
+    // ou mieux : afficher le code
+    document.body.innerHTML = "Code: " + code;
   }
 </script>
 
-<h2>Connexion réussie...</h2>
+<h2>Connexion OK</h2>
 </body>
 </html>
