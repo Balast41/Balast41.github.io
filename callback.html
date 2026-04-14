@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spotify Callback</title>
+</head>
+<body>
+<script>
+  // récupère le token ou code dans l'URL
+  const hash = window.location.hash.substring(1);
+  const params = new URLSearchParams(hash);
+
+  const token = params.get("access_token");
+  const code = params.get("code");
+
+  // envoie vers Godot via redirect custom (WRY capture)
+  const redirectUrl = "http://localhost/callback?"
+    + hash;
+
+  window.location.href = redirectUrl;
+</script>
+
+<h1>Login OK, redirection...</h1>
+</body>
+</html>
