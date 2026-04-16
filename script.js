@@ -1,6 +1,7 @@
 let ws, deadline = 0, timerId = null, lastQid = null;
 let reconnectAttempts = 0;
 const maxReconnectAttempts = 5;
+const RAILWAY_URL="wss://web-production-ae26f.up.railway.app";
 let playerName = localStorage.getItem('playerName');
 let playerId = localStorage.getItem('playerId');
 if (!playerId) {
@@ -30,7 +31,7 @@ document.addEventListener('visibilitychange', function() {
         if (ws && ws.readyState !== WebSocket.OPEN) {
             console.log('Reconnexion nécessaire');
             if (playerName) {
-              connect(wsurl, playerName);
+              connect(RAILWAY_URL, playerName);
             }
         }
     }
@@ -341,10 +342,8 @@ function showFinalRanking(ranking) {
 // --- Démarrage ---
 document.getElementById("btnJoin").onclick = () => {
   const name = document.getElementById("name").value.trim() || "Joueur";
-  
-
-  console.log("🔌 Connexion automatique à", wsurl);
-  connect(wsurl, name);
+  console.log("🔌 Connexion automatique à", RAILWAY_URL);
+  connect(RAILWAY_URL, name);
 };
 
 // Pré-remplir le nom si déjà sauvegardé
