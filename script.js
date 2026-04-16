@@ -2,7 +2,11 @@ let ws, deadline = 0, timerId = null, lastQid = null;
 let reconnectAttempts = 0;
 const maxReconnectAttempts = 5;
 let playerName = localStorage.getItem('playerName');
-let playerId = localStorage.getItem('playerId') || generateUniqueId();
+let playerId = localStorage.getItem('playerId');
+if (!playerId) {
+    playerId = Date.now().toString(36) + Math.random().toString(36).substr(2);
+    localStorage.setItem('playerId', playerId);  // 👈 sauvegarde immédiate
+}
 
 function generateUniqueId() {
     return Date.now().toString(36) + Math.random().toString(36).substr(2);
@@ -26,8 +30,6 @@ document.addEventListener('visibilitychange', function() {
         if (ws && ws.readyState !== WebSocket.OPEN) {
             console.log('Reconnexion nécessaire');
             if (playerName) {
-              let host = window.location.hostname;
-              let wsurl = `ws://${host}:8765`;
               connect(wsurl, playerName);
             }
         }
@@ -340,14 +342,6 @@ function showFinalRanking(ranking) {
 document.getElementById("btnJoin").onclick = () => {
   const name = document.getElementById("name").value.trim() || "Joueur";
   
-  // Générer un nouvel ID si pas encore défini
-  if (!playerId) {
-    playerId = generateUniqueId();
-  }
-
-  // ✅ Auto-détection de l'adresse du serveur WebSocket
-  let host = window.location.hostname; // ex: 192.168.18.177
-  let wsurl = `ws://${host}:8765`;     // ton port WS du serveur Python
 
   console.log("🔌 Connexion automatique à", wsurl);
   connect(wsurl, name);
