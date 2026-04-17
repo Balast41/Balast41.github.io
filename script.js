@@ -99,6 +99,10 @@ function connect(url, name) {
           "Films": "blindtest",
           "Séries": "blindtest",
           "Instrumental": "blindtest",
+          "Historien Musical": "blindtest",
+          "Mieux Que L'Original ?": "blindtest",
+          "Duos Gagnants": "blindtest",
+
 
           
           // Divertissement/Films -> Violet (div)
@@ -121,10 +125,11 @@ function connect(url, name) {
           
           // Littérature/Arts -> Rouge (lit)
           "Bandes Dessinées & Mangas": "lit",
-          "Mythologie Egyptienne": "lit",
-          "Mythologie Grecque": "lit", 
-          "Mythologie Nordique": "lit",
+          "Mythologies": "lit",
           "Romans Célèbres": "lit",
+          "Héros de Papier": "lit",
+          "C'est un Cap !": "lit",
+          "Livres → Films": "lit",
           
           // Sciences/Sports -> Vert (sport)
           "Football": "sport",
