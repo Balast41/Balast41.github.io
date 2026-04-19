@@ -87,7 +87,7 @@ function connect(url, name) {
           "2000s": "blindtest",
           "2010s": "blindtest",
           "2020s": "blindtest",
-          "Variété-française": "blindtest",
+          "Variété Française": "blindtest",
           "Chansons Paillardes": "blindtest",
           "Musique Disney": "blindtest",
           "Comédies Musicales": "blindtest",
@@ -116,6 +116,8 @@ function connect(url, name) {
           "Capitales": "geo",
           "Drapeaux": "geo",
           "Départements": "geo",
+          "Etats": "geo",
+          "Préfectures": "geo",
           
           // Culture générale -> Jaune (cg)
           "Dates Historiques": "cg",
