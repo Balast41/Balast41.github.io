@@ -159,18 +159,25 @@ function connect(url, name) {
 
     else if (msg.type === "reveal_correct") {
       if (pendingResult) {
+        
         const feedbackEl = document.getElementById("feedback");
-        if (msg.correct) {
-          feedbackEl.textContent = `✅ +${msg.gain} points !`;
-          feedbackEl.style.color = "green";
-        } else {
-          feedbackEl.textContent = `❌ Mauvaise réponse`;
-          feedbackEl.style.color = "red";
+        if (pendingResult) {
+            if (pendingResult.correct) {
+                let txt = `✅ +${pendingResult.gain} pts`;
+                
+                // Affiche le multiplicateur si manche finale
+                if (pendingResult.multiplier) {
+                    txt += ` (x${pendingResult.multiplier} combo !)`;
+                }
+                txt += ` — Total : ${pendingResult.score} pts`;
+                feedbackEl.textContent = txt;
+                feedbackEl.style.color = "green";
+            } else {
+                feedbackEl.textContent = `❌ +0 pt — Total : ${pendingResult.score} pts`;
+                feedbackEl.style.color = "red";
+            }
+            pendingResult = null;
         }
-
-        // Met à jour le score global
-        document.getElementById("score").textContent = `Score : ${msg.score}`;
-      }
     }
 
     // --- Score mis à jour ---
