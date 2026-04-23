@@ -153,19 +153,25 @@ function connect(url, name) {
 
     // --- Résultat d'une réponse ---
     else if (msg.type === "result") {
-      const feedbackEl = document.getElementById("feedback");
-      if (msg.correct) {
-        feedbackEl.textContent = `✅ +${msg.gain} points !`;
-        feedbackEl.style.color = "green";
-      } else {
-        feedbackEl.textContent = `❌ Mauvaise réponse`;
-        feedbackEl.style.color = "red";
-      }
 
-      // Met à jour le score global
-      document.getElementById("score").textContent = `Score : ${msg.score}`;
+      pendingResult = msg;
     }
 
+    else if (msg.type === "reveal_correct") {
+      if (pendingResult) {
+        const feedbackEl = document.getElementById("feedback");
+        if (msg.correct) {
+          feedbackEl.textContent = `✅ +${msg.gain} points !`;
+          feedbackEl.style.color = "green";
+        } else {
+          feedbackEl.textContent = `❌ Mauvaise réponse`;
+          feedbackEl.style.color = "red";
+        }
+
+        // Met à jour le score global
+        document.getElementById("score").textContent = `Score : ${msg.score}`;
+      }
+    }
 
     // --- Score mis à jour ---
     else if (msg.type === "score_update") {
