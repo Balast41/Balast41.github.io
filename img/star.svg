@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Calque_2" data-name="Calque 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 19.93 19.93">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#Dégradé_sans_nom_60);
+      }
+    </style>
+    <radialGradient id="Dégradé_sans_nom_60" data-name="Dégradé sans nom 60" cx="9.96" cy="9.96" fx="9.96" fy="9.96" r="7.04" gradientTransform="translate(-4.13 9.96) rotate(-45)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset=".17" stop-color="#fbfcfd"/>
+      <stop offset=".31" stop-color="#f1f3f6"/>
+      <stop offset=".44" stop-color="#e0e5ec"/>
+      <stop offset=".56" stop-color="#c8d0dd"/>
+      <stop offset=".68" stop-color="#a8b6cb"/>
+      <stop offset=".79" stop-color="#8296b4"/>
+      <stop offset=".9" stop-color="#567099"/>
+      <stop offset="1" stop-color="#294b7e"/>
+    </radialGradient>
+  </defs>
+  <g id="Calque_5" data-name="Calque 5">
+    <path class="cls-1" d="M19.93,9.96h0c-5.5,0-9.96-4.46-9.96-9.96h0c0,5.5-4.46,9.96-9.96,9.96h0c5.5,0,9.96,4.46,9.96,9.96h0c0-5.5,4.46-9.96,9.96-9.96Z"/>
+  </g>
+</svg>

@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&family=Share+Tech+Mono&display=swap');
+
+
+body {
+  font-family: system-ui, sans-serif;
+  color: #ffffff;
+  padding: 16px;
+  background-color: transparent;
+}
+
+a {
+  color: #ffd700;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #cccccc;
+}
+
+h1 {
+  font-family: "ShareTechMono", sans-serif;
+  text-align: center;
+}
+
+h2 {
+  font-family: "ShareTechMono ", sans-serif;  
+
+}
+
+h3 {
+  font-family: "ShareTechMono ", sans-serif;
+}
+
+/* ── Panneaux génériques (avant, choix catégorie, classement…) ── */
+.before, .cat_choix, .manche, .questions,
+.classement, .finale, .fin, .modes, .personnalisation {
+  background: linear-gradient(135deg, rgba(42, 75, 125, 0.8), rgba(201, 26, 112, 0.8));
+  border: 3px solid #ffd700;
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 80rem;
+  box-shadow: 0 8px 32px rgba(255, 215, 0, 0.3), 0 0 20px rgba(201, 26, 112, 0.5);
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1.15rem;
+}
+
+/* ── Base commune glass — factoriser le ::before ── */
+.blindtest, .sport, .div, .cg, .geo, .lit {
+  position: relative;
+  backdrop-filter: blur(18px) saturate(1.6);
+  -webkit-backdrop-filter: blur(18px) saturate(1.6);
+  border-radius: 20px;
+  border: 1px solid;
+  overflow: hidden;
+  max-width: 80rem;
+  padding: 2rem;
+  margin: 2rem auto;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1.15rem;
+}
+
+.blindtest::before, .sport::before, .div::before,
+.cg::before, .geo::before, .lit::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 45%;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.18) 0%,
+    rgba(255,255,255,0.04) 60%,
+    transparent 100%
+  );
+  border-radius: 20px 20px 60% 60%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Couleurs par catégorie ── */
+.blindtest {
+  background: rgba(255, 51, 153, 0.15);
+  border-color: rgba(255, 51, 153, 0.35);
+  box-shadow: 0 8px 32px rgba(255, 51, 153, 0.2), inset 0 1px 0 rgba(255,255,255,0.25);
+  columns: 2;
+}
+
+.sport {
+  background: rgba(0, 255, 102, 0.12);
+  border-color: rgba(0, 255, 102, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 255, 102, 0.15), inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+.div {
+  background: rgba(153, 51, 255, 0.15);
+  border-color: rgba(153, 51, 255, 0.35);
+  box-shadow: 0 8px 32px rgba(153, 51, 255, 0.2), inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+.cg {
+  background: rgba(255, 215, 0, 0.12);
+  border-color: rgba(255, 215, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(255, 215, 0, 0.15), inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+.geo {
+  background: rgba(51, 153, 255, 0.15);
+  border-color: rgba(51, 153, 255, 0.35);
+  box-shadow: 0 8px 32px rgba(51, 153, 255, 0.2), inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+.lit {
+  background: rgba(255, 51, 51, 0.15);
+  border-color: rgba(255, 51, 51, 0.35);
+  box-shadow: 0 8px 32px rgba(255, 51, 51, 0.2), inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+.cat_title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.space-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: #04060f;
+  overflow: hidden;
+}
+
+/* Copie ces classes depuis le fichier HTML */
+.stars-far { position: absolute; inset: 0; }
+.stars-far::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 12% 8%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 28% 22%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 45% 5%, rgba(255,255,255,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 63% 18%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 78% 9%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 25%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 8% 42%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 35% 55%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 55% 38%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 72% 48%, rgba(255,255,255,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 92% 62%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 18% 72%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 60% 68%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 85% 75%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 22% 90%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 50% 95%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 75% 88%, rgba(255,255,255,0.6) 0%, transparent 100%);
+  animation: drift-far 80s linear infinite;
+}
+
+.stars-mid { position: absolute; inset: 0; }
+.star { position: absolute; border-radius: 50%; animation: twinkle var(--d, 3s) ease-in-out infinite var(--delay, 0s); }
+.star-bright { width: 3px; height: 3px; box-shadow: 0 0 4px 2px currentColor; }
+
+.nebula { position: absolute; inset: 0; transition: opacity 1.2s ease; }
+.nebula-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  transition: background 1.2s ease, transform 1.2s ease, opacity 1.2s ease;
+}
+
+.layer-mid { animation: drift-mid 40s linear infinite; position: absolute; inset: 0; }
+.layer-close { animation: drift-close 20s linear infinite; position: absolute; inset: 0; }
+
+@keyframes twinkle { 0%,100%{opacity:var(--max-op,1)} 50%{opacity:0.15} }
+@keyframes drift-far { from{transform:translateX(0)} to{transform:translateX(-30px)} }
+@keyframes drift-mid { from{transform:translateX(0) translateY(0)} to{transform:translateX(-60px) translateY(-10px)} }
+@keyframes drift-close { from{transform:translateX(0) translateY(0)} to{transform:translateX(-120px) translateY(-20px)} }

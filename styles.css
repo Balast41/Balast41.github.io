@@ -4,8 +4,7 @@
     margin: 0 auto;
     padding: 16px;
     text-align: center;
-    background-color: #0a0019;
-    background-image: url("img/FE50.png");
+    background: transparent;
   }
 
   h2, h3, label, #timer {
@@ -299,3 +298,58 @@
     margin-top: 15px;
   }
 }
+
+.space-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: #04060f;
+  overflow: hidden;
+}
+
+/* Copie ces classes depuis le fichier HTML */
+.stars-far { position: absolute; inset: 0; }
+.stars-far::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 12% 8%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 28% 22%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 45% 5%, rgba(255,255,255,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 63% 18%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 78% 9%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 25%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 8% 42%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 35% 55%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 55% 38%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 72% 48%, rgba(255,255,255,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 92% 62%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 18% 72%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 60% 68%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 85% 75%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 22% 90%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 50% 95%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 75% 88%, rgba(255,255,255,0.6) 0%, transparent 100%);
+  animation: drift-far 80s linear infinite;
+}
+
+.stars-mid { position: absolute; inset: 0; }
+.star { position: absolute; border-radius: 50%; animation: twinkle var(--d, 3s) ease-in-out infinite var(--delay, 0s); }
+.star-bright { width: 3px; height: 3px; box-shadow: 0 0 4px 2px currentColor; }
+
+.nebula { position: absolute; inset: 0; transition: opacity 1.2s ease; }
+.nebula-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  transition: background 1.2s ease, transform 1.2s ease, opacity 1.2s ease;
+}
+
+.layer-mid { animation: drift-mid 40s linear infinite; position: absolute; inset: 0; }
+.layer-close { animation: drift-close 20s linear infinite; position: absolute; inset: 0; }
+
+@keyframes twinkle { 0%,100%{opacity:var(--max-op,1)} 50%{opacity:0.15} }
+@keyframes drift-far { from{transform:translateX(0)} to{transform:translateX(-30px)} }
+@keyframes drift-mid { from{transform:translateX(0) translateY(0)} to{transform:translateX(-60px) translateY(-10px)} }
+@keyframes drift-close { from{transform:translateX(0) translateY(0)} to{transform:translateX(-120px) translateY(-20px)} }
