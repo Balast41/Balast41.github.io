@@ -1,6 +1,7 @@
 let ws, deadline = 0, timerId = null, lastQid = null;
 let reconnectAttempts = 0;
 const maxReconnectAttempts = 5;
+let currentRoomCode = null;
 const RAILWAY_URL="wss://web-production-ae26f.up.railway.app";
 let playerName = localStorage.getItem('playerName');
 let playerId = localStorage.getItem('playerId');
@@ -39,20 +40,31 @@ document.addEventListener('visibilitychange', function() {
 
 
 // --- Connexion au serveur ---
-function connect(url, name) {
+function connect(url, name, roomCode = null) {
   ws = new WebSocket(url);
   playerName = name;
   localStorage.setItem('playerName', name);
   localStorage.setItem('playerId', playerId);
+   if (roomCode) currentRoomCode = roomCode.toUpperCase();
 
   ws.onopen = () => {
     setStatus("✅ Connecté au serveur !");
     reconnectAttempts = 0;
+    if (roomCode) {
     ws.send(JSON.stringify({ 
-      type: "join", 
+      type: "join_room",
+      code: roomCode.toUpperCase(),
       name: name,
-      id: playerId
+      id: playerId,
+      
     }));
+    } else {
+      ws.send(JSON.stringify({
+        type: "join",
+        name: name,
+        id: playerId,
+      }));
+    }
     show("#game");
   };
 
@@ -210,7 +222,7 @@ function connect(url, name) {
       setTimeout(() => {
         reconnectAttempts++;
         setStatus(`🔄 Tentative de reconnexion ${reconnectAttempts}/${maxReconnectAttempts}...`);
-        connect(url, playerName);
+        connect(url, playerName,currentRoomCode);
       }, 2000 * reconnectAttempts); // Délai croissant
     } else {
       setStatus("❌ Impossible de se reconnecter");
@@ -351,10 +363,21 @@ function showFinalRanking(ranking) {
 
 // --- Démarrage ---
 document.getElementById("btnJoin").onclick = () => {
+  const room = document.getElementById("room").value.trim();
   const name = document.getElementById("name").value.trim() || "Joueur";
-  console.log("🔌 Connexion automatique à", RAILWAY_URL);
-  connect(RAILWAY_URL, name);
-};
+
+  if (!room) {
+    alert("Veuillez entrer le code de la partie.");
+    return;
+  }
+
+  if (!name) {
+    alert("Veuillez entrer votre pseudo.");
+    return;
+  }
+  connect(RAILWAY_URL, name,room);
+}
+
 
 // Pré-remplir le nom si déjà sauvegardé
 if (playerName) {
