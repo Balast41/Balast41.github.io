@@ -10,6 +10,11 @@ if (!playerId) {
     localStorage.setItem('playerId', playerId);  // 👈 sauvegarde immédiate
 }
 
+
+document.getElementById("room").value =
+  new URLSearchParams(location.search).get("room") || "";
+
+
 function generateUniqueId() {
     return Date.now().toString(36) + Math.random().toString(36).substr(2);
 }
