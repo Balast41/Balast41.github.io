@@ -6,7 +6,7 @@ const RAILWAY_URL="wss://web-production-ae26f.up.railway.app";
 let playerName = localStorage.getItem('playerName');
 let playerId = localStorage.getItem('playerId');
 let isBattleRoyale = false;
-let isElimated = false;
+let isEliminated = false;
 let currentLives = 0;
 if (!playerId) {
     playerId = Date.now().toString(36) + Math.random().toString(36).substr(2);
@@ -97,7 +97,7 @@ function connect(url, name, roomCode = null) {
 
     else if (msg.type === "battle_royale_setup"){
       isBattleRoyale = true;
-      isElimated = false;
+      isEliminated = false;
       currentLives = msg.lives;
       updateLivesDisplay();
     }
@@ -343,12 +343,12 @@ function renderQuestion(text, choices, qid) {
 
 // --- Envoi de la réponse ---
 function answer(choice) {
-  if (isElimated || !ws || ws.readyState !== WebSocket.OPEN || !lastQid) {
+  if (isEliminated || !ws || ws.readyState !== WebSocket.OPEN || !lastQid) {
     console.log('Impossible d\'envoyer la réponse: connexion fermée ou pas de question active');
     return;
   }
   ws.send(JSON.stringify({
-     type: isBattleRoyale ? "battle_royale_answer" : "answer",
+     type: isBattleRoyale ? "answer_battle_royale" : "answer",
      qid: lastQid, choice 
     }));
   disableChoices();
