@@ -234,7 +234,7 @@ function connect(url, name, roomCode = null) {
 
     else if (msg.type === "eliminated") {
       setFeedback("💀 Vous êtes éliminé !");
-      isElimated = true;
+      isEliminated = true;
       disableChoices();
     }
 
@@ -336,7 +336,7 @@ function renderQuestion(text, choices, qid) {
     const b = document.createElement("button");
     b.textContent = c;
     b.onclick = () => answer(i);
-    b.disabled = isElimated; // Désactiver si le joueur est éliminé
+    b.disabled = isEliminated; // Désactiver si le joueur est éliminé
     wrap.appendChild(b);
   });
 }
