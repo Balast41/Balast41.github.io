@@ -5,6 +5,9 @@ let currentRoomCode = null;
 const RAILWAY_URL="wss://web-production-ae26f.up.railway.app";
 let playerName = localStorage.getItem('playerName');
 let playerId = localStorage.getItem('playerId');
+let isBattleRoyale = false;
+let isElimated = false;
+let currentLives = 0;
 if (!playerId) {
     playerId = Date.now().toString(36) + Math.random().toString(36).substr(2);
     localStorage.setItem('playerId', playerId);  // 👈 sauvegarde immédiate
@@ -87,6 +90,19 @@ function connect(url, name, roomCode = null) {
       handleCategoryChoice(msg);
     }
 
+    else if (msg.type === "battle_royale"){
+      isBattleRoyale = true;
+      setFeedback("⚔️ Battle Royale activé !");
+    }
+
+    else if (msg.type === "battle_royale_setup"){
+      isBattleRoyale = true;
+      isElimated = false;
+      currentLives = msg.lives;
+      updateLivesDisplay();
+    }
+
+
     // --- Une question démarre ---
     else if (msg.type === "question") {
       lastQid = msg.qid;
@@ -119,6 +135,9 @@ function connect(url, name, roomCode = null) {
           "Historien Musical": "blindtest",
           "Mieux Que L'Original ?": "blindtest",
           "Duos Gagnants": "blindtest",
+          "Rap" : "blindtest",
+          "Tiktok Hits" : "blindtest",
+          "Eurovision" : "blindtest",
 
 
           
@@ -128,6 +147,7 @@ function connect(url, name, roomCode = null) {
           "Jeux Vidéos": "div",
           "Tabarnak": "div",
           "Affiches": "div",
+          "Oscars": "div",
           
           // Géographie -> Bleu (geo)
           "Capitales": "geo",
@@ -184,6 +204,11 @@ function connect(url, name, roomCode = null) {
 
       // Met à jour le score global
       document.getElementById("score").textContent = `Score : ${msg.score}`;
+
+      if (msg.lives_left !== undefined) {
+        currentLives = msg.lives_left;
+        updateLivesDisplay();
+      }
     }
 
 
@@ -195,12 +220,22 @@ function connect(url, name, roomCode = null) {
     else if (msg.type === "round_update") {
       const round = msg.round;
       const total = msg.total;
-      document.getElementById("round").textContent = `Tour : ${round} / ${total}`;
+      if (total == "infinite") {
+        document.getElementById("round").textContent = `Tour : ${round} / ∞`;
+      } else {
+        document.getElementById("round").textContent = `Tour : ${round} / ${total}`;
+      }
     }
 
     // --- Classement de fin de catégorie ---
     else if (msg.type === "show_ranking") {
       showRanking(msg.scores);
+    }
+
+    else if (msg.type === "eliminated") {
+      setFeedback("💀 Vous êtes éliminé !");
+      isElimated = true;
+      disableChoices();
     }
 
     // --- Fin de partie ---
@@ -209,9 +244,16 @@ function connect(url, name, roomCode = null) {
       stopTimer();
       showFinalRanking(msg.ranking);
     }
+    else if (msg.type === "end_battle royale"){
+      setFeedback("🏁 Fin de partie !");
+      stopTimer();
+      showFinalRanking(msg.ranking);
+    }
     // --- Demande de reload envoyée par le serveur ---
     else if (msg.type === "reload") {
       console.log('Reload demandé par le serveur');
+      isBattleRoyale = false;
+      currentLives = 0;
       try {
         window.location.reload();
       } catch (e) {
@@ -294,17 +336,21 @@ function renderQuestion(text, choices, qid) {
     const b = document.createElement("button");
     b.textContent = c;
     b.onclick = () => answer(i);
+    b.disabled = isElimated; // Désactiver si le joueur est éliminé
     wrap.appendChild(b);
   });
 }
 
 // --- Envoi de la réponse ---
 function answer(choice) {
-  if (!ws || ws.readyState !== WebSocket.OPEN || !lastQid) {
+  if (isElimated || !ws || ws.readyState !== WebSocket.OPEN || !lastQid) {
     console.log('Impossible d\'envoyer la réponse: connexion fermée ou pas de question active');
     return;
   }
-  ws.send(JSON.stringify({ type: "answer", qid: lastQid, choice }));
+  ws.send(JSON.stringify({
+     type: isBattleRoyale ? "battle_royale_answer" : "answer",
+     qid: lastQid, choice 
+    }));
   disableChoices();
 }
 
@@ -431,4 +477,17 @@ for(let i = 0; i < 45; i++){
     filter: drop-shadow(0 0 3px white);
   `;
   midEl.appendChild(s);
+}
+
+function updateLivesDisplay() {
+  const livesEl = document.getElementById("lives");
+  if (!isBattleRoyale) {
+    livesEl.textContent = "";
+    livesEl.hidden = true;
+    return;
+  }
+  else {
+    livesEl.hidden = false;
+  }
+  livesEl.textContent = "❤️".repeat(Math.max(0, currentLives)) + "🖤".repeat(Math.max(0, 3 - currentLives));
 }
