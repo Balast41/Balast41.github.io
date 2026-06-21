@@ -295,15 +295,15 @@ function handleCategoryChoice(data) {
   buttons.innerHTML = "";
   box.classList.remove("hidden");
 
-  available.forEach(cat => {
-    const isMystery = index == 2;
+  available.forEach((cat, index) => {
+    const isMystery = index === 2;
     const btn = document.createElement("button");
     btn.textContent = isMystery ? "Thème Mystère" : cat;
     const catClass = "cat-" + cat.replaceAll(" ", "_").replaceAll("&", "et").replaceAll("'", "").replaceAll("é", "e").toLowerCase();
     btn.classList.add(catClass);
     console.log("Classe:", catClass, "pour catégorie:", cat);
 
-    
+
 
     // ✅ Si c’est TON tour de choisir :
     if (chooser === playerName) {
