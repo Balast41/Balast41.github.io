@@ -1,3 +1,7 @@
+ :root {
+  color-scheme: light;
+}
+ 
  body {
     font-family: system-ui, sans-serif;
     max-width: 520px;
@@ -12,6 +16,9 @@
     text-shadow: #000 0 0 2px;
   }
   button {
+    -webkit-appearance: none;
+    appearance: none;
+    color-scheme: light;
     padding: 14px;
     margin: 8px 0;
     width: 100%;
@@ -91,6 +98,12 @@
   background-image: none !important; 
   color: black !important; 
   text-shadow: none !important; 
+}
+
+#category-buttons button,
+#choices button {
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 
