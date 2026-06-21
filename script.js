@@ -8,6 +8,65 @@ let playerId = localStorage.getItem('playerId');
 let isBattleRoyale = false;
 let isEliminated = false;
 let currentLives = 0;
+
+const categoryMapping = {
+  "1960-70s": "blindtest",
+  "1980s": "blindtest", 
+  "1990s": "blindtest",
+  "2000s": "blindtest",
+  "2010s": "blindtest",
+  "2020s": "blindtest",
+  "Variété Française": "blindtest",
+  "Chansons Paillardes": "blindtest",
+  "Musique Disney": "blindtest",
+  "Comédies Musicales": "blindtest",
+  "Répliques de Films": "blindtest",
+  "Dessins Animés": "blindtest",
+  "Musique Classique": "blindtest",
+  "Animés Japonais": "blindtest",
+  "Musique de Jeux Vidéos": "blindtest",
+  "Films": "blindtest",
+  "Séries": "blindtest",
+  "Instrumental": "blindtest",
+  "Historien Musical": "blindtest",
+  "Mieux Que L'Original ?": "blindtest",
+  "Duos Gagnants": "blindtest",
+  "Rap": "blindtest",
+  "Tiktok Hits": "blindtest",
+  "Eurovision": "blindtest",
+
+  "Disney": "div",
+  "Marvel": "div",
+  "Jeux Vidéos": "div",
+  "Tabarnak": "div",
+  "Affiches": "div",
+  "Oscars": "div",
+
+  "Capitales": "geo",
+  "Drapeaux": "geo",
+  "Départements": "geo",
+  "Etats": "geo",
+  "Préfectures": "geo",
+
+  "Dates Historiques": "cg",
+  "Le Choix dans la Date": "cg",
+  "Mathématiques": "cg",
+  "Physique & Chimie": "cg",
+
+  "Bandes Dessinées & Mangas": "lit",
+  "Mythologies": "lit",
+  "Romans Célèbres": "lit",
+  "Héros de Papier": "lit",
+  "C'est un Cap !": "lit",
+  "Livres → Films": "lit",
+
+  "Football": "sport",
+  "Formule 1": "sport",
+  "Rugby": "sport",
+  "Jeux Olympiques": "sport",
+  "Multi-Sport": "sport"
+};
+
 if (!playerId) {
     playerId = Date.now().toString(36) + Math.random().toString(36).substr(2);
     localStorage.setItem('playerId', playerId);  // 👈 sauvegarde immédiate
@@ -110,73 +169,6 @@ function connect(url, name, roomCode = null) {
       if (msg.categorie) {
         const wrap = document.getElementById("choices");
         wrap.className = ""; // reset
-        
-        // Mapping des catégories vers les 6 types de couleurs
-        const categoryMapping = {
-          // Années/Musique -> Rose (blindtest)
-          "1960-70s": "blindtest",
-          "1980s": "blindtest", 
-          "1990s": "blindtest",
-          "2000s": "blindtest",
-          "2010s": "blindtest",
-          "2020s": "blindtest",
-          "Variété Française": "blindtest",
-          "Chansons Paillardes": "blindtest",
-          "Musique Disney": "blindtest",
-          "Comédies Musicales": "blindtest",
-          "Répliques de Films": "blindtest",
-          "Dessins Animés": "blindtest",
-          "Musique Classique": "blindtest",
-          "Animés Japonais": "blindtest",
-          "Musique de Jeux Vidéos": "blindtest",
-          "Films": "blindtest",
-          "Séries": "blindtest",
-          "Instrumental": "blindtest",
-          "Historien Musical": "blindtest",
-          "Mieux Que L'Original ?": "blindtest",
-          "Duos Gagnants": "blindtest",
-          "Rap" : "blindtest",
-          "Tiktok Hits" : "blindtest",
-          "Eurovision" : "blindtest",
-
-
-          
-          // Divertissement/Films -> Violet (div)
-          "Disney": "div",
-          "Marvel": "div",
-          "Jeux Vidéos": "div",
-          "Tabarnak": "div",
-          "Affiches": "div",
-          "Oscars": "div",
-          
-          // Géographie -> Bleu (geo)
-          "Capitales": "geo",
-          "Drapeaux": "geo",
-          "Départements": "geo",
-          "Etats": "geo",
-          "Préfectures": "geo",
-          
-          // Culture générale -> Jaune (cg)
-          "Dates Historiques": "cg",
-          "Le Choix dans la Date": "cg",
-          "Mathématiques": "cg",
-          "Physique & Chimie": "cg",
-          
-          // Littérature/Arts -> Rouge (lit)
-          "Bandes Dessinées & Mangas": "lit",
-          "Mythologies": "lit",
-          "Romans Célèbres": "lit",
-          "Héros de Papier": "lit",
-          "C'est un Cap !": "lit",
-          "Livres → Films": "lit",
-          
-          // Sciences/Sports -> Vert (sport)
-          "Football": "sport",
-          "Formule 1": "sport",
-          "Rugby": "sport",
-          "Jeux Olympiques": "sport",
-          "Multi-Sport": "sport"
-        };
         
         const categoryType = categoryMapping[msg.categorie] || "default";
         const catClass = "cat-" + categoryType;
@@ -301,7 +293,7 @@ function handleCategoryChoice(data) {
     btn.textContent = isMystery ? "Thème Mystère" : cat;
     const catClass = isMystery
       ? "cat-myst"
-      : "cat-" + cat.replaceAll(" ", "_").replaceAll("&", "et").replaceAll("'", "").replaceAll("é", "e").toLowerCase();
+      : "cat-" + (categoryMapping[cat] || "default");
     btn.classList.add(catClass);
     console.log("Classe:", catClass, "pour catégorie:", cat);
 
