@@ -34,6 +34,7 @@ const categoryMapping = {
   "Rap": "blindtest",
   "Tiktok Hits": "blindtest",
   "Eurovision": "blindtest",
+  
 
   "Disney": "div",
   "Marvel": "div",
