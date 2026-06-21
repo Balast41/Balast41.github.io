@@ -50,45 +50,89 @@
 
 
 #category-buttons .cat-blindtest { 
-  background-color: #FF3399 !important; 
+  background-color: #FFB3D9 !important; 
   background-image: none !important; 
   color: black !important; 
   text-shadow: none !important; 
 }
 #category-buttons .cat-div { 
-  background-color: #9933FF !important; 
+  background-color: #D4B3FF !important; 
   background-image: none !important; 
   color: black !important; 
   text-shadow: none !important; 
 }
 #category-buttons .cat-geo { 
-  background-color: #3399FF !important; 
+  background-color: #A8D4FF !important; 
   background-image: none !important; 
   color: black !important; 
   text-shadow: none !important; 
 }
 #category-buttons .cat-cg { 
-  background-color: #FFD700 !important; 
+  background-color: #FFE9A8 !important; 
   background-image: none !important; 
   color: black !important; 
   text-shadow: none !important; 
 }
 #category-buttons .cat-lit { 
-  background-color: #FF3333 !important; 
+  background-color: #FFB3B3 !important; 
   background-image: none !important; 
   color: black !important; 
   text-shadow: none !important; 
 }
 #category-buttons .cat-sport { 
-  background-color: #00FF66 !important; 
+  background-color: #A8F0C8 !important; 
   background-image: none !important; 
   color: black !important; 
   text-shadow: none !important; 
 }
 
 #category-buttons .cat-myst { 
-  background-color: #00FFFF !important; 
+  background-color: #A8F5F5 !important; 
   background-image: none !important; 
+  color: black !important; 
+  text-shadow: none !important; 
+}
+
+
+.cat-blindtest button {
+    background-color: #FFB3D9 !important;
+    background-image: none !important; 
+  color: black !important; 
+  text-shadow: none !important; 
+}
+.cat-div button {
+    background-color: #D4B3FF !important;
+    background-image: none !important; 
+  color: black !important; 
+  text-shadow: none !important; 
+}
+.cat-geo button {
+    background-color: #A8D4FF !important;
+    background-image: none !important; 
+  color: black !important; 
+  text-shadow: none !important; 
+}
+.cat-cg button {
+    background-color: #FFE9A8 !important;
+    background-image: none !important; 
+  color: black !important; 
+  text-shadow: none !important; 
+}
+.cat-lit button {
+    background-color: #FFB3B3 !important;
+    background-image: none !important; 
+  color: black !important; 
+  text-shadow: none !important; 
+}
+.cat-sport button {
+    background-color: #A8F0C8 !important;
+    background-image: none !important; 
+  color: black !important; 
+  text-shadow: none !important; 
+}
+.cat-myst button {
+    background-color: #A8F5F5 !important;
+    background-image: none !important; 
   color: black !important; 
   text-shadow: none !important; 
 }
