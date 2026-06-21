@@ -49,57 +49,70 @@
 
 
 
-.cat-blindtest button {
-    background-color: #e8adcf !important;
-    background-image: none !important;
-    color: black !important;
-    text-shadow: none !important;
+#category-buttons .cat-blindtest { 
+  background-color: #FF3399 !important; 
+  background-image: none !important; 
+  color: black !important; 
+  text-shadow: none !important; 
+}
+#category-buttons .cat-div { 
+  background-color: #9933FF !important; 
+  background-image: none !important; 
+  color: black !important; 
+  text-shadow: none !important; 
+}
+#category-buttons .cat-geo { 
+  background-color: #3399FF !important; 
+  background-image: none !important; 
+  color: black !important; 
+  text-shadow: none !important; 
+}
+#category-buttons .cat-cg { 
+  background-color: #FFD700 !important; 
+  background-image: none !important; 
+  color: black !important; 
+  text-shadow: none !important; 
+}
+#category-buttons .cat-lit { 
+  background-color: #FF3333 !important; 
+  background-image: none !important; 
+  color: black !important; 
+  text-shadow: none !important; 
+}
+#category-buttons .cat-sport { 
+  background-color: #00FF66 !important; 
+  background-image: none !important; 
+  color: black !important; 
+  text-shadow: none !important; 
 }
 
-.cat-div button {
-    background-color: #b5b3da !important;
-    background-image: none !important;
-    color: black !important;
-    text-shadow: none !important;
+#category-buttons .cat-myst { 
+  background-color: #00FFFF !important; 
+  background-image: none !important; 
+  color: black !important; 
+  text-shadow: none !important; 
 }
 
-.cat-geo button {
-    background-color: #accde5 !important;
-    background-image: none !important;
-    color: black !important;
-    text-shadow: none !important;
-}
-
-.cat-cg button{
-    background-color: #ffe882 !important;
-    background-image: none !important;
-    color: black !important;
-    text-shadow: none !important;
-}
-
-.cat-lit button {
-    background-color: #e25a5a !important;
-    background-image: none !important;
-    text-shadow: none !important;
-    color: black !important;
-}
-
-.cat-sport button {
-    background-color: #abd39f !important;
-    background-image: none !important;
-    text-shadow: none !important;
-    color: black !important;
+#category-buttons .cat-blindtest:hover,
+#category-buttons .cat-div:hover,
+#category-buttons .cat-geo:hover,
+#category-buttons .cat-cg:hover,
+#category-buttons .cat-lit:hover,
+#category-buttons .cat-sport:hover,
+#category-buttons .cat-myst:hover {
+  filter: brightness(1.15);
+  transform: scale(1.03);
 }
 
 /* Adaptation automatique au thème sombre du système */
 @media (prefers-color-scheme: dark) {
-  .cat-blindtest button,
-  .cat-div button,
-  .cat-geo button,
-  .cat-cg button,
-  .cat-lit button,
-  .cat-sport button,
-  #choices.cat-default button {
+  #category-buttons .cat-blindtest,
+  #category-buttons .cat-div,
+  #category-buttons .cat-geo,
+  #category-buttons .cat-cg,
+  #category-buttons .cat-lit,
+  #category-buttons .cat-sport,
+  #category-buttons .cat-myst {
     color: white !important;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
   }
@@ -107,32 +120,19 @@
 
 /* Adaptation automatique au thème clair du système */
 @media (prefers-color-scheme: light) {
-  .cat-blindtest button,
-  .cat-div button,
-  .cat-geo button,
-  .cat-cg button,
-  .cat-lit button,
-  .cat-sport button,
-  #choices.cat-default button {
+  #category-buttons .cat-blindtest,
+  #category-buttons .cat-div,
+  #category-buttons .cat-geo,
+  #category-buttons .cat-cg,
+  #category-buttons .cat-lit,
+  #category-buttons .cat-sport,
+  #category-buttons .cat-myst {
     color: black !important;
     text-shadow: none !important;
   }
 }
 
 
-
-
-/* Effet hover */
-.cat-blindtest button:hover,
-.cat-div button:hover,
-.cat-geo button:hover,
-.cat-cg button:hover,
-.cat-lit button:hover,
-.cat-sport button:hover
- {
-    filter: brightness(1.15);
-    transform: scale(1.03);
-}
 
 /* 🎨 Cadre pour la connexion */
 #join {
