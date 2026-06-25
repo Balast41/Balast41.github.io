@@ -8,6 +8,7 @@ let playerId = localStorage.getItem('playerId');
 let isBattleRoyale = false;
 let isEliminated = false;
 let currentLives = 0;
+let sliderAnswered = false;
 
 const categoryMapping = {
   "1960-70s": "blindtest",
@@ -179,7 +180,12 @@ function connect(url, name, roomCode = null) {
         // Catégorie par défaut si pas de catégorie spécifiée
         document.getElementById("choices").className = "cat-default";
       }
-      renderQuestion(msg.text || msg.question, msg.choices, msg.qid);
+
+      if (msg.answer_type === "slider"){
+        renderSliderQuestion(msg.text || msg.question, msg.choices,  msg.qid);
+      } else {
+        renderQuestion(msg.text || msg.question, msg.choices, msg.qid);
+      }
       startTimer();
       setFeedback("");
     }
@@ -327,6 +333,7 @@ function handleCategoryChoice(data) {
 // --- Affichage d'une question ---
 function renderQuestion(text, choices, qid) {
   hideAll();
+  window._submitCurrentSlider = null;
   const wrap = document.getElementById("choices");
   document.getElementById("question").textContent = text;
   document.getElementById("game").classList.remove("hidden");
@@ -360,11 +367,17 @@ function startTimer() {
   timerId = setInterval(() => {
     const left = Math.max(0, deadline - Date.now());
     document.getElementById("timer").textContent = `⏱️ ${Math.ceil(left / 1000)}s`;
-    if (left <= 0) stopTimer();
+    if (left <= 0) { 
+      stopTimer();
+      if (typeof window._submitCurrentSlider === "function") {
+        window._submitCurrentSlider();
+      }
+      disableChoices();
+     }
   }, 200);
 }
 function stopTimer() { if (timerId) { clearInterval(timerId); timerId = null; } }
-function disableChoices() { document.querySelectorAll("#choices button").forEach(b => b.disabled = true); }
+function disableChoices() { document.querySelectorAll("#choices button, #choices input").forEach(b => b.disabled = true); }
 
 // --- Feedback / UI utils ---
 function hideAll() {
@@ -490,4 +503,66 @@ function updateLivesDisplay() {
     livesEl.hidden = false;
   }
   livesEl.textContent = "❤️".repeat(Math.max(0, currentLives)) + "🖤".repeat(Math.max(0, 3 - currentLives));
+}
+
+function renderSliderQuestion(text, choices, qid) {
+  hideAll();
+  window._submitCurrentSlider = null;
+  sliderAnswered = false;
+  const [min, max] = choices;
+  const mid = Math.round((min + max) / 2);
+
+  document.getElementById("question").textContent = text;
+  document.getElementById("game").classList.remove("hidden");
+
+  const wrap = document.getElementById("choices");
+  wrap.innerHTML = "";
+
+  const valueDisplay = document.createElement("div");
+  valueDisplay.id = "sliderValue";
+  valueDisplay.className = "slider-value";
+  valueDisplay.textContent = mid;
+
+  const slider = document.createElement("input");
+  slider.type = "range";
+  slider.id = "sliderInput";
+  slider.min = min;
+  slider.max = max;
+  slider.value = mid;
+  slider.step = 1;
+  slider.disabled = isEliminated;
+
+  const bounds = document.createElement("div");
+  bounds.className = "slider-bounds";
+  bounds.innerHTML = `<span>${min}</span><span>${max}</span>`;
+
+  const submitBtn = document.createElement("button");
+  submitBtn.id = "sliderSubmit";
+  submitBtn.className = "submit-btn";
+  submitBtn.textContent = "Valider";
+  submitBtn.disabled = isEliminated;
+
+  wrap.append(valueDisplay, slider, bounds, submitBtn);
+
+  slider.addEventListener("input", () => {
+    valueDisplay.textContent = slider.value;
+  });
+
+  function submitAnswer() {
+    if (sliderAnswered || qid !== lastQid) return;
+    sliderAnswered = true;
+    submitBtn.disabled = true;
+    slider.disabled = true;
+
+    ws.send(JSON.stringify({
+      type: isBattleRoyale ? "answer_battle_royale" : "answer",
+      qid: qid,
+      choice: parseInt(slider.value, 10)
+    }));
+
+    setFeedback("Réponse envoyée : " + slider.value);
+  }
+
+  submitBtn.addEventListener("click", submitAnswer);
+  window._submitCurrentSlider = submitAnswer;
 }
