@@ -2,7 +2,7 @@ let ws, deadline = 0, timerId = null, lastQid = null;
 let reconnectAttempts = 0;
 const maxReconnectAttempts = 5;
 let currentRoomCode = null;
-const RAILWAY_URL="wss://web-production-ae26f.up.railway.app";
+const URL="wss://ws.balast.tech";
 let playerName = localStorage.getItem('playerName');
 let playerId = localStorage.getItem('playerId');
 let isBattleRoyale = false;
@@ -101,7 +101,7 @@ document.addEventListener('visibilitychange', function() {
         if (ws && ws.readyState !== WebSocket.OPEN) {
             console.log('Reconnexion nécessaire');
             if (playerName) {
-              connect(RAILWAY_URL, playerName);
+              connect(URL, playerName);
             }
         }
     }
@@ -439,7 +439,7 @@ document.getElementById("btnJoin").onclick = () => {
     alert("Veuillez entrer votre pseudo.");
     return;
   }
-  connect(RAILWAY_URL, name,room);
+  connect(URL, name,room);
 }
 
 
