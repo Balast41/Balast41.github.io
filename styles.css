@@ -16,6 +16,7 @@ h2, h3, label, #timer {
   text-shadow: #000 0 0 2px;
 }
 
+
 button {
   -webkit-appearance: none;
   appearance: none;
@@ -254,6 +255,16 @@ button:hover {
   min-height: 20px;
 }
 
+.space-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: url('img/FE50.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 @media (max-width: 768px) {
   body {
     max-width: 100%;
@@ -357,9 +368,3 @@ button:hover {
   }
 }
 
-.space-bg {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background: radial-gradient(ellipse at 30% 40%, #080d1a 0%, #04060f 100%);
-}

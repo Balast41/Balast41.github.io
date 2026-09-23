@@ -134,6 +134,8 @@ h3 {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: radial-gradient(ellipse at 30% 40%, #080d1a 0%, #04060f 100%);
-  overflow: hidden;
+  background-image: url('img/FE50.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
