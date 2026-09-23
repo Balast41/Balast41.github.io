@@ -35,6 +35,8 @@ const categoryMapping = {
   "Rap": "blindtest",
   "Tiktok Hits": "blindtest",
   "Eurovision": "blindtest",
+  "Girl Power": "blindtest",
+  "Albums Cultes": "blindtest",
   
 
   "Disney": "div",
@@ -54,6 +56,7 @@ const categoryMapping = {
   "Le Choix dans la Date": "cg",
   "Mathématiques": "cg",
   "Physique & Chimie": "cg",
+  "Informatique": "cg",
 
   "Bandes Dessinées & Mangas": "lit",
   "Mythologies": "lit",
