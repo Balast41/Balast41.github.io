@@ -1,60 +1,51 @@
 <!doctype html>
 <html lang="fr">
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<link rel="icon" type="image/png" href="/img/Icone.png">
-<link rel="stylesheet" href="styles.css"/>
-<title>StarMind</title>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" type="image/png" href="/img/Icone.png">
+    <link rel="stylesheet" href="styles.css"/>
+    <title>StarMind</title>
+</head>
+<body>
 
-<!-- 🔹 Écran de connexion -->
-<div id="join">
-  <img src="img/Logo.png" alt="Logo Quiz" style="width:300px;"/>
-  <h2>Rejoindre une partie</h2>
-  <br/>
-  <label>Code de la partie</label>
-  <input id="room" placeholder="Entrez le code de la partie" style="width:100%; padding:10px"/>
-  <br/>
-  <br/>
-  <label>Pseudo</label>
-  <input id="name" placeholder="Votre pseudo" style="width:100%; padding:10px"/>
-  <br/>
-  <br/>
-  <button id="btnJoin">Rejoindre</button>
-  <p id="status"></p>
-</div>
+    <!-- 🔹 Écran de connexion -->
+    <div id="join">
+        <img src="img/Logo.png" alt="Logo Quiz" style="width:300px;"/>
+        <h2>Rejoindre une partie</h2>
+        <br/>
+        <label for="room">Code de la partie</label>
+        <input id="room" placeholder="Entrez le code de la partie" style="width:100%; padding:10px"/>
+        <br/>
+        <br/>
+        <label for="name">Pseudo</label>
+        <input id="name" placeholder="Votre pseudo" style="width:100%; padding:10px"/>
+        <br/>
+        <br/>
+        <button id="btnJoin">Rejoindre</button>
+        <p id="status"></p>
+    </div>
 
-<!-- 🔹 Écran du jeu -->
-<div id="game" class="hidden">
-  <h2 id="question">En attente de la première question…</h2>
-  <h3 id="score">Score : 0</h3>
-  <div id="choices"></div>
-  <p id="timer"></p>
-  <span id="lives"></span>
-  <h3 id="feedback"></h3>
-  <h3 id="round">Tour : 1/10</h3>
-</div>
+    <!-- 🔹 Écran du jeu -->
+    <div id="game" class="hidden">
+        <h2 id="question">En attente de la première question…</h2>
+        <h3 id="score">Score : 0</h3>
+        <div id="choices"></div>
+        <p id="timer"></p>
+        <span id="lives"></span>
+        <h3 id="feedback"></h3>
+        <h3 id="round">Tour : 1/10</h3>
+    </div>
 
-<!-- 🔹 Choix de catégorie -->
-<div id="category-choice" class="hidden">
-  <h2 id="category-info">Choisis une catégorie :</h2>
-  <div id="category-buttons"></div>
-</div>
+    <!-- 🔹 Choix de catégorie -->
+    <div id="category-choice" class="hidden">
+        <h2 id="category-info">Choisis une catégorie :</h2>
+        <div id="category-buttons"></div>
+    </div>
 
-<div class="space-bg" id="space-bg">
-  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 40%, #080d1a 0%, #04060f 100%)"></div>
-  <div class="stars-far" id="layer-far"></div>
-  <div class="layer-mid" id="layer-mid-wrap">
-    <div class="stars-mid" id="layer-mid"></div>
-  </div>
-  <div class="layer-close" id="layer-close-wrap">
-    <div id="layer-close"></div>
-  </div>
-  <div class="nebula" id="nebula">
-    <div class="nebula-blob" id="blob1" style="width:500px;height:400px;top:-100px;left:-100px;opacity:0.12"></div>
-    <div class="nebula-blob" id="blob2" style="width:400px;height:350px;bottom:-80px;right:-80px;opacity:0.10"></div>
-    <div class="nebula-blob" id="blob3" style="width:250px;height:250px;top:30%;left:40%;opacity:0.07"></div>
-  </div>
-</div>
+    <!-- 🔹 Arrière-plan spatial 100% statique -->
+    <div class="space-bg" style="position: fixed; inset: 0; z-index: -1; background: radial-gradient(ellipse at 30% 40%, #080d1a 0%, #04060f 100%);"></div>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
+</body>
 </html>

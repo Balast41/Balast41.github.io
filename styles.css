@@ -1,60 +1,65 @@
- :root {
+:root {
   color-scheme: light;
 }
- 
- body {
-    font-family: system-ui, sans-serif;
-    max-width: 520px;
-    margin: 0 auto;
-    padding: 16px;
-    text-align: center;
-    background: transparent;
-  }
 
-  h2, h3, label, #timer {
-    color: #ffffff;
-    text-shadow: #000 0 0 2px;
-  }
-  button {
-    -webkit-appearance: none;
-    appearance: none;
-    color-scheme: light;
-    padding: 14px;
-    margin: 8px 0;
-    width: 100%;
-    font-size: 18px;
-    border-radius: 10px;
-    border: none;
-    background-image: linear-gradient(to right, #2a4b7d , #c91a70,#ffd700);
-    color: white;
-    cursor: pointer;
-    transition: 0.2s;
-    text-shadow: #000 0 0 2px;
-  }
-  button:hover{
-    filter: brightness(1.15);
-    transform: scale(1.03);
+body {
+  font-family: system-ui, sans-serif;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 16px;
+  text-align: center;
+  background: transparent;
 }
-  #choices button { 
-    text-align: left; 
-    color: black !important;
-  }
-  .hidden { display: none; }
-  #category-choice button {
-    width: auto;
-    padding: 10px 20px;
-    margin: 10px;
-  }
 
-  /* Style par défaut pour toutes les catégories */
-  #choices.cat-default button {
-    background-color: #cccccc !important;
-    background-image: none !important;
-    color: black !important;
-    text-align: center;
-  }
+h2, h3, label, #timer {
+  color: #ffffff;
+  text-shadow: #000 0 0 2px;
+}
 
+button {
+  -webkit-appearance: none;
+  appearance: none;
+  color-scheme: light;
+  padding: 14px;
+  margin: 8px 0;
+  width: 100%;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+  background-image: linear-gradient(to right, #2a4b7d, #c91a70, #ffd700);
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+  text-shadow: #000 0 0 2px;
+}
 
+button:hover {
+  filter: brightness(1.15);
+  transform: scale(1.03);
+}
+
+#choices button { 
+  text-align: left; 
+  color: black !important;
+}
+
+.hidden { 
+  display: none; 
+}
+
+#category-choice button {
+  width: auto;
+  padding: 10px 20px;
+  margin: 10px;
+}
+
+/* Style par défaut pour toutes les catégories */
+#choices.cat-default button {
+  background-color: #cccccc !important;
+  background-image: none !important;
+  color: black !important;
+  text-align: center;
+}
 
 #category-buttons .cat-blindtest { 
   background-color: #FFB3D9 !important; 
@@ -106,46 +111,45 @@
   appearance: none;
 }
 
-
 .cat-blindtest button {
-    background-color: #FFB3D9 !important;
-    background-image: none !important; 
+  background-color: #FFB3D9 !important;
+  background-image: none !important; 
   color: black !important; 
   text-shadow: none !important; 
 }
 .cat-div button {
-    background-color: #D4B3FF !important;
-    background-image: none !important; 
+  background-color: #D4B3FF !important;
+  background-image: none !important; 
   color: black !important; 
   text-shadow: none !important; 
 }
 .cat-geo button {
-    background-color: #A8D4FF !important;
-    background-image: none !important; 
+  background-color: #A8D4FF !important;
+  background-image: none !important; 
   color: black !important; 
   text-shadow: none !important; 
 }
 .cat-cg button {
-    background-color: #FFE9A8 !important;
-    background-image: none !important; 
+  background-color: #FFE9A8 !important;
+  background-image: none !important; 
   color: black !important; 
   text-shadow: none !important; 
 }
 .cat-lit button {
-    background-color: #FFB3B3 !important;
-    background-image: none !important; 
+  background-color: #FFB3B3 !important;
+  background-image: none !important; 
   color: black !important; 
   text-shadow: none !important; 
 }
 .cat-sport button {
-    background-color: #A8F0C8 !important;
-    background-image: none !important; 
+  background-color: #A8F0C8 !important;
+  background-image: none !important; 
   color: black !important; 
   text-shadow: none !important; 
 }
 .cat-myst button {
-    background-color: #A8F5F5 !important;
-    background-image: none !important; 
+  background-color: #A8F5F5 !important;
+  background-image: none !important; 
   color: black !important; 
   text-shadow: none !important; 
 }
@@ -188,8 +192,6 @@
     text-shadow: none !important;
   }
 }
-
-
 
 /* 🎨 Cadre pour la connexion */
 #join {
@@ -252,7 +254,6 @@
   min-height: 20px;
 }
 
-/* 📱 Media Queries pour Responsive */
 @media (max-width: 768px) {
   body {
     max-width: 100%;
@@ -360,53 +361,5 @@
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: #04060f;
-  overflow: hidden;
+  background: radial-gradient(ellipse at 30% 40%, #080d1a 0%, #04060f 100%);
 }
-
-/* Copie ces classes depuis le fichier HTML */
-.stars-far { position: absolute; inset: 0; }
-.stars-far::before {
-  content: '';
-  position: absolute; inset: 0;
-  background-image:
-    radial-gradient(1px 1px at 12% 8%, rgba(255,255,255,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 28% 22%, rgba(255,255,255,0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 45% 5%, rgba(255,255,255,0.6) 0%, transparent 100%),
-    radial-gradient(1px 1px at 63% 18%, rgba(255,255,255,0.3) 0%, transparent 100%),
-    radial-gradient(1px 1px at 78% 9%, rgba(255,255,255,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 90% 25%, rgba(255,255,255,0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 8% 42%, rgba(255,255,255,0.3) 0%, transparent 100%),
-    radial-gradient(1px 1px at 35% 55%, rgba(255,255,255,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 55% 38%, rgba(255,255,255,0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 72% 48%, rgba(255,255,255,0.6) 0%, transparent 100%),
-    radial-gradient(1px 1px at 92% 62%, rgba(255,255,255,0.3) 0%, transparent 100%),
-    radial-gradient(1px 1px at 18% 72%, rgba(255,255,255,0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 60% 68%, rgba(255,255,255,0.3) 0%, transparent 100%),
-    radial-gradient(1px 1px at 85% 75%, rgba(255,255,255,0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 22% 90%, rgba(255,255,255,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 50% 95%, rgba(255,255,255,0.3) 0%, transparent 100%),
-    radial-gradient(1px 1px at 75% 88%, rgba(255,255,255,0.6) 0%, transparent 100%);
-  animation: drift-far 80s linear infinite;
-}
-
-.stars-mid { position: absolute; inset: 0; }
-.star { position: absolute; border-radius: 50%; animation: twinkle var(--d, 3s) ease-in-out infinite var(--delay, 0s); }
-.star-bright { width: 3px; height: 3px; box-shadow: 0 0 4px 2px currentColor; }
-
-.nebula { position: absolute; inset: 0; transition: opacity 1.2s ease; }
-.nebula-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  transition: background 1.2s ease, transform 1.2s ease, opacity 1.2s ease;
-}
-
-.layer-mid { animation: drift-mid 40s linear infinite; position: absolute; inset: 0; }
-.layer-close { animation: drift-close 20s linear infinite; position: absolute; inset: 0; }
-
-@keyframes twinkle { 0%,100%{opacity:var(--max-op,1)} 50%{opacity:0.15} }
-@keyframes drift-far { from{transform:translateX(0)} to{transform:translateX(-30px)} }
-@keyframes drift-mid { from{transform:translateX(0) translateY(0)} to{transform:translateX(-60px) translateY(-10px)} }
-@keyframes drift-close { from{transform:translateX(0) translateY(0)} to{transform:translateX(-120px) translateY(-20px)} }
