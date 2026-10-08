@@ -12,6 +12,7 @@ let sliderAnswered = false;
 let pingInterval = null;
 
 const categoryMapping = {
+  "Préhistoire": "blindtest",
   "1960-70s": "blindtest",
   "1980s": "blindtest", 
   "1990s": "blindtest",
